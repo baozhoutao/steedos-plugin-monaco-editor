@@ -1,0 +1,51 @@
+{
+    "name": "@steedos/plugin-monaco-editor",
+    "version": "0.0.1",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "debug": "nodemon server.js",
+        "start": "node server.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "fe-build": "rm -rf public/code-builder && cross-env  NODE_ENV=production webpack --config ./webapp/webpack.config.js --mode production  --colors --max_old_space_size=1024 && rm -rf docker/public  "
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@steedos/accounts": "^1.19.4",
+        "@steedos/steedos-plugin-workflow": "^2.0.3",
+        "dotenv-flow": "^3.1.0",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-monaco-editor": "latest",
+        "steedos-server": "^1.20.7"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.10.4",
+        "@babel/plugin-proposal-class-properties": "^7.10.4",
+        "@babel/preset-env": "^7.10.4",
+        "@babel/preset-react": "^7.10.4",
+        "babel-loader": "^8.1.0",
+        "cross-env": "^7.0.2",
+        "css-loader": "^3.6.0",
+        "file-loader": "^6.0.0",
+        "monaco-editor-webpack-plugin": "^1.9.0",
+        "nodemon": "^1.19.1",
+        "style-loader": "^1.2.1",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
+    },
+    "homepage": "https://developer.steedos.com",
+    "resolutions": {
+        "**/lodash": "^4.17.15",
+        "**/handlebars": "^4.3.0",
+        "**/debug": "^3.1.0",
+        "**/hoek": "^5.0.3",
+        "**/cryptiles": "^4.1.2",
+        "**/bcrypt": "3.0.6",
+        "**/samlp": "3.4.1",
+        "**/xmldom": "0.2.1",
+        "**/tslib": "1.11.2"
+    }
+}
