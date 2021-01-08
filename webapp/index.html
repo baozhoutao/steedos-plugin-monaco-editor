@@ -17,6 +17,13 @@
                 width: calc(100% - 20px)
             }
         </style>
+        <script>
+          const search  = new URLSearchParams(window.location.search);
+          const title = search.get('title');
+          if(title){
+            document.title = title
+          };
+        </script>
     </head>
 
     <body>

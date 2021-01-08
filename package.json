@@ -2,25 +2,28 @@
     "name": "@steedos/plugin-monaco-editor",
     "version": "0.0.1",
     "description": "",
-    "main": "server.js",
+    "main": "index.js",
+    "files": [
+        "public/**",
+        "src/**"
+    ],
     "scripts": {
         "debug": "nodemon server.js",
         "start": "node server.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "fe-build": "rm -rf public/code-builder && cross-env  NODE_ENV=production webpack --config ./webapp/webpack.config.js --mode production  --colors --max_old_space_size=1024 && rm -rf docker/public  "
+        "fe-build": "rm -rf public/code-builder && cross-env  NODE_ENV=production webpack --config ./webapp/webpack.config.js --mode production  --colors --max_old_space_size=1024 && rm -rf docker/public  ",
+        "linkToDevPlatform": "node .scripts/npm-postinstall.js"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@steedos/accounts": "^1.19.4",
-        "@steedos/steedos-plugin-workflow": "^2.0.3",
         "dotenv-flow": "^3.1.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-monaco-editor": "latest",
-        "steedos-server": "^1.20.7"
+        "react-monaco-editor": "latest"
     },
     "devDependencies": {
+        "@steedos/accounts": "^1.23.0-alpha.14",
         "@babel/core": "^7.10.4",
         "@babel/plugin-proposal-class-properties": "^7.10.4",
         "@babel/preset-env": "^7.10.4",
@@ -34,7 +37,8 @@
         "style-loader": "^1.2.1",
         "webpack": "^4.43.0",
         "webpack-cli": "^3.3.12",
-        "webpack-dev-server": "^3.11.0"
+        "webpack-dev-server": "^3.11.0",
+        "steedos-server": "^1.23.0-alpha.14"
     },
     "homepage": "https://developer.steedos.com",
     "resolutions": {

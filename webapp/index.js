@@ -5,31 +5,40 @@ import MonacoEditor, { MonacoDiffEditor } from "react-monaco-editor";
 class CodeEditor extends React.Component {
   constructor() {
     super();
+    const search  = new URLSearchParams(window.location.search);
+    const target = search.get('target');
     this.state = {
+      target: target,
       code: '',
-      theme: "vs-light",
+      theme: "vs-light", //vs-dark
     };
   }
 
   componentDidMount(){
     let self = this;
+    const { target } = this.state;
     window.addEventListener('message', function(result){
-      let code = result.data;
-      console.log('message code', code);
-      if(typeof code === 'string'){
-        self.setState({code: code});
+      try {
+        const data = JSON.parse(result.data);
+        if(data.steedosMonacoEditor){
+          const code = data.steedosMonacoEditor.code ? data.steedosMonacoEditor.code: '';
+          self.setState({code: code.replaceAll('\\r','\r').replaceAll('\\n','\n')});
+        }
+      } catch (error) {
+        // console.error('message code', result.data, error);
       }
-    })
+    });
+    window.opener.postMessage(JSON.stringify({steedosMonacoEditor: {[target]: {init: true}}}));
   }
 
   onChange = (newValue) => {
-    window.opener.postMessage(newValue)
-    console.log("onChange", newValue); // eslint-disable-line no-console
+    const { target } = this.state;
+    window.opener.postMessage(JSON.stringify({steedosMonacoEditor: {[target]: {code: newValue}}}));
   };
 
   editorDidMount = (editor) => {
     // eslint-disable-next-line no-console
-    console.log("editorDidMount", editor, editor.getValue(), editor.getModel());
+    // console.log("editorDidMount", editor, editor.getValue(), editor.getModel());
     this.editor = editor;
   };
 

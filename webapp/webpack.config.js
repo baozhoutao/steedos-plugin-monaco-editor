@@ -4,8 +4,8 @@ const moduleName = 'code-builder'
 // const MonacoEditorSrc = path.join(__dirname, "..", "src");
 
 module.exports = {
-  // entry: {app: "./webapp/index.js"}, //./index.js
-  entry: {app: "./index.js"},
+  entry: {app: "./webapp/index.js"}, //./index.js
+  // entry: {app: "./index.js"},
   mode: "development",
   devtool: "source-map",
   output: {

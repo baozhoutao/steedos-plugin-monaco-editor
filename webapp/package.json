@@ -1,15 +1,11 @@
 {
-  "name": "react-monaco-editor-browser-example",
+  "name": "steedos-react-monaco-editor-browser",
   "private": true,
   "version": "0.0.0",
   "description": "Monaco Editor for React",
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress --colors --port 8886"
   },
-  "authors": [
-    "Leon Shi <superRaytin@gmail.com>",
-    "Dominik Moritz <domoritz@gmail.com>"
-  ],
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.10.4",
